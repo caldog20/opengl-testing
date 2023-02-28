@@ -42,11 +42,12 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.gitmodules")
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-
+add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/fmt)
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 include_directories(${PROJECT_SOURCE_DIR}/src/)
+include_directories(${PROJECT_SOURCE_DIR}/third_party/Dolphin/)
 
 # GLEW
 find_package(GLEW REQUIRED)
@@ -55,7 +56,7 @@ find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
-add_executable(OpenGL_Testing src/main.cpp)
+add_executable(OpenGL_Testing src/main.cpp src/verts.hpp src/shader.cpp)
 
-target_link_libraries (${PROJECT_NAME} PRIVATE ${OPENGL_LIBRARY} calib capstone-static glfw GLEW::GLEW)
+target_link_libraries (${PROJECT_NAME} PRIVATE ${OPENGL_LIBRARY} glfw GLEW::GLEW fmt::fmt)
 

@@ -1,18 +1,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <array>
 #include <fstream>
 #include <iostream>
 #include <istream>
 #include <sstream>
 #include <vector>
-#include "global.hpp"
-#include "verts.hpp"
-#include "test.hpp"
-#include "shader.hpp"
-#include <vector>
-#include <array>
 
+#include "global.hpp"
+#include "shader.hpp"
+#include "test.hpp"
+#include "verts.hpp"
 
 GLFWwindow* window = nullptr;
 unsigned int vbo;
@@ -93,7 +92,7 @@ int main() {
     glVertexAttribPointer(4, 2, GL_UNSIGNED_SHORT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, u));
     glEnableVertexAttribArray(4);
 
-//    GL_RGBA8
+    //    GL_RGBA8
 
     glUniform1i(glGetUniformLocation(shader.m_programID, "u_vramTex"), 0);
     glUniform4i(glGetUniformLocation(shader.m_programID, "u_texWindow"), 0, 0, 0, 0);
@@ -102,47 +101,42 @@ int main() {
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, 1024, 512);
     glTexSubImage2D(GL_TEXTURE_2D, 0, 640, 0, 60, 48, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, &texdata[0]);
-//    glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, 1024, 512);
-//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1024, 512, 0, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, &texdata[0]);
-
-
+    //    glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, 1024, 512);
+    //    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1024, 512, 0, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, &texdata[0]);
 
     glDisable(GL_CULL_FACE);
     glDisable(GL_BLEND);
 
-   verts[vertCount++] = Vertex(23527764, 746619008, 30740, 15, 2014576640);
-   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
-   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
-   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
-   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
-   verts[vertCount++] = Vertex(24314220, 746619008, 30740, 15, 2839);
+    verts[vertCount++] = Vertex(23527764, 746619008, 30740, 15, 2014576640);
+    verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
+    verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
+    verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
+    verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
+    verts[vertCount++] = Vertex(24314220, 746619008, 30740, 15, 2839);
 
-//   verts[vertCount++] = Vertex(25034952, 746619008, 30736, 14, 2014314496);
-//   verts[vertCount++] = Vertex(25035192, 746619008, 30736, 14, 917743);
-//   verts[vertCount++] = Vertex(28967112, 746619008, 30736, 14, 15104);
-//   verts[vertCount++] = Vertex(25035192, 746619008, 30736, 14, 917743);
-//   verts[vertCount++] = Vertex(28967112, 746619008, 30736, 14, 15104);
-//   verts[vertCount++] = Vertex(28967352, 746619008, 30736, 14, 15343);
-//
-//   verts[vertCount++] = Vertex(3670216, 746619008, 30732, 13, 2014052352);
-//   verts[vertCount++] = Vertex(3670456, 746619008, 30732, 13, 852207);
-//   verts[vertCount++] = Vertex(6815944, 746619008, 30732, 13, 12032);
-//   verts[vertCount++] = Vertex(3670456, 746619008, 30732, 13, 852207);
-//   verts[vertCount++] = Vertex(6815944, 746619008, 30732, 13, 12032);
-//   verts[vertCount++] = Vertex(6816184, 746619008, 30732, 13, 12271);
-//
-//   verts[vertCount++] = Vertex(23527764, 746619008, 30740, 15, 2014576640);
-//   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
-//   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
-//   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
-//   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
-//   verts[vertCount++] = Vertex(24314220, 746619008, 30740, 15, 2839);
-
+    //   verts[vertCount++] = Vertex(25034952, 746619008, 30736, 14, 2014314496);
+    //   verts[vertCount++] = Vertex(25035192, 746619008, 30736, 14, 917743);
+    //   verts[vertCount++] = Vertex(28967112, 746619008, 30736, 14, 15104);
+    //   verts[vertCount++] = Vertex(25035192, 746619008, 30736, 14, 917743);
+    //   verts[vertCount++] = Vertex(28967112, 746619008, 30736, 14, 15104);
+    //   verts[vertCount++] = Vertex(28967352, 746619008, 30736, 14, 15343);
+    //
+    //   verts[vertCount++] = Vertex(3670216, 746619008, 30732, 13, 2014052352);
+    //   verts[vertCount++] = Vertex(3670456, 746619008, 30732, 13, 852207);
+    //   verts[vertCount++] = Vertex(6815944, 746619008, 30732, 13, 12032);
+    //   verts[vertCount++] = Vertex(3670456, 746619008, 30732, 13, 852207);
+    //   verts[vertCount++] = Vertex(6815944, 746619008, 30732, 13, 12032);
+    //   verts[vertCount++] = Vertex(6816184, 746619008, 30732, 13, 12271);
+    //
+    //   verts[vertCount++] = Vertex(23527764, 746619008, 30740, 15, 2014576640);
+    //   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
+    //   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
+    //   verts[vertCount++] = Vertex(23527788, 746619008, 30740, 15, 983063);
+    //   verts[vertCount++] = Vertex(24314196, 746619008, 30740, 15, 2816);
+    //   verts[vertCount++] = Vertex(24314220, 746619008, 30740, 15, 2839);
 
     glBufferSubData(GL_ARRAY_BUFFER, vertOffset, sizeof(Vertex) * vertCount, &verts[0]);
     vertOffset = vertCount * sizeof(Vertex);
-
-
 
     while (!glfwWindowShouldClose(window)) {
         clear();
@@ -167,4 +161,3 @@ int main() {
     glfwTerminate();
     return 0;
 }
-

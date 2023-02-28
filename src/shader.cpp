@@ -83,8 +83,7 @@ void Shader::setup(const fspath& vertexShaderPath, const fspath& fragmentShaderP
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-//    const auto vramSamplerLoc = GL::uniformLocation(m_programID, "vramTex");
-//    glUniform1i(glGetUniformLocation(m_programID, "u_vramTex"), 0);
-//    glUniform4i(glGetUniformLocation(m_programID, "u_texWindow"), 0, 0, 0, 0);
-
+    //    const auto vramSamplerLoc = GL::uniformLocation(m_programID, "vramTex");
+    //    glUniform1i(glGetUniformLocation(m_programID, "u_vramTex"), 0);
+    //    glUniform4i(glGetUniformLocation(m_programID, "u_texWindow"), 0, 0, 0, 0);
 }

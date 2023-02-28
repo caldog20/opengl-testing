@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glew.h>
+
 #include "global.hpp"
 
 struct Vertex {
@@ -23,7 +24,6 @@ struct Vertex {
         x = position & 0xffff;
         y = (position >> 16) & 0xffff;
         texpage = 0x8000;
-
     }
 
     Vertex(u32 position, u32 color, u16 clut, u16 texpage, u32 texcoords) : color(color), texpage(texpage), clut(clut) {
@@ -36,31 +36,24 @@ struct Vertex {
     Vertex() = default;
 };
 
+// Not used right now
 struct Texture {
     Texture() = default;
 
-    Texture(int width, int height, GLenum type)
-        : m_width(width), m_height(height),
-          m_type(type) {
+    Texture(int width, int height, GLenum type) : m_width(width), m_height(height), m_type(type) {
         glGenTextures(1, &m_handle);
     }
 
-    void bind() {
-        glBindTexture(m_type, m_handle);
-    }
+    void bind() { glBindTexture(m_type, m_handle); }
 
     void set(GLint format) {
         bind();
         glTexStorage2D(m_type, 1, format, m_width, m_height);
     }
 
-    GLuint handle() {
-        return m_handle;
-    }
+    GLuint handle() { return m_handle; }
 
-    ~Texture() {
-        glDeleteTextures(1, &m_handle);
-    }
+    ~Texture() { glDeleteTextures(1, &m_handle); }
 
     GLuint m_handle{};
     GLenum m_type;
